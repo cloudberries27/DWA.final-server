@@ -23,8 +23,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", getAllPosts);
 app.use("/create-post", createPost);
 
-app.use("/form", (req, res) => 
- res.sendFile("/public/index.html", {root: __dirname}) 
-);
+// app.use("/form", (req, res) => 
+//  res.sendFile("/public/index.html", {root: __dirname}) 
+// );
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
