@@ -13,14 +13,12 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
+const index = require('./routes/index.js');
 const createPost = require('./routes/createPost.js');
-const getAllPosts = require('./routes/getAllPosts.js');
 
 
 app.use(express.static(path.join(__dirname, "public")));
-
-app.use("/", getAllPosts);
+app.use("/", index)
 app.use("/create-post", createPost);
 
 // app.use("/form", (req, res) => 
