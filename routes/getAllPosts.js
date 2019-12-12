@@ -18,21 +18,30 @@ if (!firebase.apps.length) {
 
 const db = firebase.firestore();
 
-let postArr = [];
-db.collection('posts').get()
-    .then(post => {            
-            post.forEach(postData =>{
-                postArr.push(postData.data());
-            });            
-            console.log('Posts', postArr);
-        }
-    )
-    .catch(err => {
-        console.log('error', err);
-    })
+router.get("/:id", (req, res) => {
+    let queryId = req.params.id; 
+    let docRef = db.collection("posts"); 
+    let query = docRef
+        .where("userID", "==", queryId)
+        .get()
+        .then(snapshot => {
+            if (snapshot.empty) {
+                console.log("No matches");
+                return;
+            }
+            snapshot.forEach(doc => {
+                console.log(doc.id, "=>", doc.data());
+            });
+        })
+        .catch(err => {
+            console.log("error", err);
+        });
 
-router.get('/', (req, res) => {
-    res.send(postArr);
+            res.send(query);
+
 });
 
+
+
+//we're exporting the router here.
 module.exports = router;
