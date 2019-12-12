@@ -23,9 +23,9 @@ router.get("/", (req,res) => {
 
     db.collection("posts")
     .add({      
-        Title: TitleVal,
-        Text: TextVal,
-        UserID: UserIDVal
+        title: TitleVal,
+        text: TextVal,
+        user: UserIDVal
     })
     .then(ref => res.send(ref)) 
     .catch(e => res.send(e));

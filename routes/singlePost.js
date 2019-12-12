@@ -17,7 +17,7 @@ if (!firebase.apps.length) {
 const db = firebase.firestore();
 
 let postRef = db.collection('posts');
-let query = postRef.where('userID', '==', 'IVWjDQk9xnQP1GWIOcf5f4AXpCM2').get()
+let query = postRef.where('user', '==', 'IVWjDQk9xnQP1GWIOcf5f4AXpCM2').get()
   .then(snapshot => {
     if (snapshot.empty) {
       console.log('No matches');

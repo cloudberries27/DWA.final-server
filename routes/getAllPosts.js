@@ -22,7 +22,7 @@ router.get("/:id", (req, res) => {
     let queryId = req.params.id; 
     let docRef = db.collection("posts"); 
     let query = docRef
-        .where("userID", "==", queryId)
+        .where("user", "==", queryId)
         .get()
         .then(snapshot => {
             if (snapshot.empty) {
