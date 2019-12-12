@@ -14,12 +14,16 @@ app.use(function(req, res, next) {
   next();
 });
 const index = require('./routes/index.js');
-const createPost = require('./routes/createPost.js');
+const makePost = require('./routes/makePost.js');
+const singlePost = require('./routes/singlePost.js');
+const getallPosts = require('./routes/getallPosts.js');
 
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", index)
-app.use("/create-post", createPost);
+app.use("/make-post", makePost);
+app.use("/single-post", singlePost);
+app.use("/get-all-posts", getallPosts);
 
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
