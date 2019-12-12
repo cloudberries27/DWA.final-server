@@ -27,3 +27,5 @@ app.use("/get-all-posts", getallPosts);
 
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
+
+module.exports = app;
